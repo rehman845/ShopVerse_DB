@@ -1,0 +1,1811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7A8D66D-9205-4349-A883-05A6AD8B2956}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DBProject</RootNamespace>
+    <AssemblyName>DBProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.11.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.11.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Licensing.6.0.4\lib\net472\Bunifu.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.7.2.0\lib\net472\Bunifu.UI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AnalysisServices.AppLocal, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AnalysisServices.AppLocal.Tabular, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.5.2.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.35.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.35.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.35.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.8.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCart.Designer.cs">
+      <DependentUpon>AdminCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCategoryManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCategoryManage.Designer.cs">
+      <DependentUpon>AdminCategoryManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCustInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCustInfo.Designer.cs">
+      <DependentUpon>AdminCustInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCustManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCustManage.Designer.cs">
+      <DependentUpon>AdminCustManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDeIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDeIn.Designer.cs">
+      <DependentUpon>AdminDeIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminLogIn.Designer.cs">
+      <DependentUpon>AdminLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogisticsManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminLogisticsManage.Designer.cs">
+      <DependentUpon>AdminLogisticsManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminOrdFul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminOrdFul.Designer.cs">
+      <DependentUpon>AdminOrdFul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminOrdManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminOrdManage.Designer.cs">
+      <DependentUpon>AdminOrdManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPlat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPlat.Designer.cs">
+      <DependentUpon>AdminPlat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProdManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminProdManage.Designer.cs">
+      <DependentUpon>AdminProdManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminReports.Designer.cs">
+      <DependentUpon>AdminReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSellerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSellerInfo.Designer.cs">
+      <DependentUpon>AdminSellerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSellerManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSellerManage.Designer.cs">
+      <DependentUpon>AdminSellerManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSellPerf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSellPerf.Designer.cs">
+      <DependentUpon>AdminSellPerf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSignUp.Designer.cs">
+      <DependentUpon>AdminSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CatProds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatProds.Designer.cs">
+      <DependentUpon>CatProds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustAccInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustAccInfo.Designer.cs">
+      <DependentUpon>CustAccInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustCart.Designer.cs">
+      <DependentUpon>CustCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustCheckout.Designer.cs">
+      <DependentUpon>CustCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustDashboard.Designer.cs">
+      <DependentUpon>CustDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustForYou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustForYou.Designer.cs">
+      <DependentUpon>CustForYou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustLogIn.Designer.cs">
+      <DependentUpon>CustLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustMyOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustMyOrders.Designer.cs">
+      <DependentUpon>CustMyOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustOrdDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustOrdDetails.Designer.cs">
+      <DependentUpon>CustOrdDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustReviews.Designer.cs">
+      <DependentUpon>CustReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustSignUp.Designer.cs">
+      <DependentUpon>CustSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustUpdAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustUpdAcc.Designer.cs">
+      <DependentUpon>CustUpdAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustViewCards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustViewCards.Designer.cs">
+      <DependentUpon>CustViewCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustWishlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustWishlist.Designer.cs">
+      <DependentUpon>CustWishlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBDemoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDemoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogisticsDashboard.Designer.cs">
+      <DependentUpon>LogisticsDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogisticsLogIn.Designer.cs">
+      <DependentUpon>LogisticsLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogisticsSignUp.Designer.cs">
+      <DependentUpon>LogisticsSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPlaced.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderPlaced.Designer.cs">
+      <DependentUpon>OrderPlaced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductInfo.Designer.cs">
+      <DependentUpon>ProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReviewForm.Designer.cs">
+      <DependentUpon>ReviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchResults.Designer.cs">
+      <DependentUpon>SearchResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerCustBehaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerCustBehaveForm.Designer.cs">
+      <DependentUpon>SellerCustBehaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerDashboard.Designer.cs">
+      <DependentUpon>SellerDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerInventory.Designer.cs">
+      <DependentUpon>SellerInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerInvReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerInvReport.Designer.cs">
+      <DependentUpon>SellerInvReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerLogIn.Designer.cs">
+      <DependentUpon>SellerLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerOrdDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerOrdDetails.Designer.cs">
+      <DependentUpon>SellerOrdDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerOrdManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerOrdManage.Designer.cs">
+      <DependentUpon>SellerOrdManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerProdEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerProdEdit.Designer.cs">
+      <DependentUpon>SellerProdEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerRating.Designer.cs">
+      <DependentUpon>SellerRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerReports.Designer.cs">
+      <DependentUpon>SellerReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerRevCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerRevCat.Designer.cs">
+      <DependentUpon>SellerRevCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerSalesPerfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerSalesPerfForm.Designer.cs">
+      <DependentUpon>SellerSalesPerfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerSignUp.Designer.cs">
+      <DependentUpon>SellerSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerUpdAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerUpdAcc.Designer.cs">
+      <DependentUpon>SellerUpdAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAbdCart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAbdCart.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAbdRea.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAbdRea.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEActRat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEActRat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAge.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAge.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAgeDist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAgeDist.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAnaGen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAnaGen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAvgAbd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAvgAbd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAvgFul.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAvgFul.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAvgRatProd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAvgRatProd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEAvgSpend.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEAvgSpend.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEBasLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEBasLoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEBestProds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEBestProds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSECatCont.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSECatCont.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataGenDem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataGenDem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet141.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet141.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet151.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet151.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet161.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet161.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet171.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet171.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDeadStock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDeadStock.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEDemPref.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEDemPref.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEFreqAbd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEFreqAbd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGenAna.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGenAna.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGend.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGend.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGetAge.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGetAge.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGetChurn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGetChurn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGetDem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGetDem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGetGen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGetGen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEGetLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEGetLoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEInsLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEInsLoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSELocIns.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSELocIns.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSELowStock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSELowStock.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSENewAge.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSENewAge.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSENewUse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSENewUse.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEOrdComp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEOrdComp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEPreDem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEPreDem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSERatTop.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSERatTop.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSERelShip.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSERelShip.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSERepeatPurch.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSERepeatPurch.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEReturn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEReturn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSERevPerCat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSERevPerCat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSESaleAvgOrd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSESaleAvgOrd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSESalSel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSESalSel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSESelRet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSESelRet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSESentiment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSESentiment.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEShipDel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEShipDel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSETopCat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSETopCat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSETrendCat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSETrendCat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSETurnOver.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSETurnOver.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SHOPVERSEUseEng.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHOPVERSEUseEng.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserType.Designer.cs">
+      <DependentUpon>UserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminCart.rdlc" />
+    <EmbeddedResource Include="AdminCart.resx">
+      <DependentUpon>AdminCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminCategoryManage.resx">
+      <DependentUpon>AdminCategoryManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminCustInfo.resx">
+      <DependentUpon>AdminCustInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminCustManage.resx">
+      <DependentUpon>AdminCustManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDeIn.rdlc" />
+    <EmbeddedResource Include="AdminDeIn.resx">
+      <DependentUpon>AdminDeIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminLogIn.resx">
+      <DependentUpon>AdminLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminLogisticsManage.resx">
+      <DependentUpon>AdminLogisticsManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminOrdFul.rdlc" />
+    <EmbeddedResource Include="AdminOrdFul.resx">
+      <DependentUpon>AdminOrdFul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminOrdManage.resx">
+      <DependentUpon>AdminOrdManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPlat.rdlc" />
+    <EmbeddedResource Include="AdminPlat.resx">
+      <DependentUpon>AdminPlat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminProdManage.resx">
+      <DependentUpon>AdminProdManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminReports.resx">
+      <DependentUpon>AdminReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSellerInfo.resx">
+      <DependentUpon>AdminSellerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSellerManage.resx">
+      <DependentUpon>AdminSellerManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSellPerf.rdlc" />
+    <EmbeddedResource Include="AdminSellPerf.resx">
+      <DependentUpon>AdminSellPerf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSignUp.resx">
+      <DependentUpon>AdminSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatProds.resx">
+      <DependentUpon>CatProds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustAccInfo.resx">
+      <DependentUpon>CustAccInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustCart.resx">
+      <DependentUpon>CustCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustCheckout.resx">
+      <DependentUpon>CustCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustDashboard.resx">
+      <DependentUpon>CustDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustForYou.resx">
+      <DependentUpon>CustForYou.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustLogIn.resx">
+      <DependentUpon>CustLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustMyOrders.resx">
+      <DependentUpon>CustMyOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustOrdDetails.resx">
+      <DependentUpon>CustOrdDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustReviews.resx">
+      <DependentUpon>CustReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustSignUp.resx">
+      <DependentUpon>CustSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustUpdAcc.resx">
+      <DependentUpon>CustUpdAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustViewCards.resx">
+      <DependentUpon>CustViewCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustWishlist.resx">
+      <DependentUpon>CustWishlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogisticsDashboard.resx">
+      <DependentUpon>LogisticsDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogisticsLogIn.resx">
+      <DependentUpon>LogisticsLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogisticsSignUp.resx">
+      <DependentUpon>LogisticsSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderPlaced.resx">
+      <DependentUpon>OrderPlaced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductInfo.resx">
+      <DependentUpon>ProductInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReviewForm.resx">
+      <DependentUpon>ReviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesPerfReport.rdlc" />
+    <EmbeddedResource Include="SearchResults.resx">
+      <DependentUpon>SearchResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerCatRev.rdlc" />
+    <EmbeddedResource Include="SellerCustBehaveForm.resx">
+      <DependentUpon>SellerCustBehaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerCustBehaveReport.rdlc" />
+    <EmbeddedResource Include="SellerDashboard.resx">
+      <DependentUpon>SellerDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerInventory.resx">
+      <DependentUpon>SellerInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerInvReport.rdlc" />
+    <EmbeddedResource Include="SellerInvReport.resx">
+      <DependentUpon>SellerInvReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerLogIn.resx">
+      <DependentUpon>SellerLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerOrdDetails.resx">
+      <DependentUpon>SellerOrdDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerOrdManage.resx">
+      <DependentUpon>SellerOrdManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerProdEdit.resx">
+      <DependentUpon>SellerProdEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerRating.rdlc" />
+    <EmbeddedResource Include="SellerRating.resx">
+      <DependentUpon>SellerRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerReports.resx">
+      <DependentUpon>SellerReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerRevCat.resx">
+      <DependentUpon>SellerRevCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerSalesPerfForm.resx">
+      <DependentUpon>SellerSalesPerfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerSignUp.resx">
+      <DependentUpon>SellerSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerUpdAcc.resx">
+      <DependentUpon>SellerUpdAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserType.resx">
+      <DependentUpon>UserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ProdInfo_ProdReviews.rdlc" />
+    <None Include="DBDemoDataSet.xsc">
+      <DependentUpon>DBDemoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBDemoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBDemoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBDemoDataSet.xss">
+      <DependentUpon>DBDemoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SHOPVERSEAbdCart.xsc">
+      <DependentUpon>SHOPVERSEAbdCart.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAbdCart.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAbdCart.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAbdCart.xss">
+      <DependentUpon>SHOPVERSEAbdCart.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAbdRea.xsc">
+      <DependentUpon>SHOPVERSEAbdRea.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAbdRea.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAbdRea.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAbdRea.xss">
+      <DependentUpon>SHOPVERSEAbdRea.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEActRat.xsc">
+      <DependentUpon>SHOPVERSEActRat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEActRat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEActRat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEActRat.xss">
+      <DependentUpon>SHOPVERSEActRat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAge.xsc">
+      <DependentUpon>SHOPVERSEAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAge.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAge.xss">
+      <DependentUpon>SHOPVERSEAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAgeDist.xsc">
+      <DependentUpon>SHOPVERSEAgeDist.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAgeDist.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAgeDist.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAgeDist.xss">
+      <DependentUpon>SHOPVERSEAgeDist.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAnaGen.xsc">
+      <DependentUpon>SHOPVERSEAnaGen.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAnaGen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAnaGen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAnaGen.xss">
+      <DependentUpon>SHOPVERSEAnaGen.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgAbd.xsc">
+      <DependentUpon>SHOPVERSEAvgAbd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgAbd.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAvgAbd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAvgAbd.xss">
+      <DependentUpon>SHOPVERSEAvgAbd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgFul.xsc">
+      <DependentUpon>SHOPVERSEAvgFul.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgFul.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAvgFul.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAvgFul.xss">
+      <DependentUpon>SHOPVERSEAvgFul.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgRatProd.xsc">
+      <DependentUpon>SHOPVERSEAvgRatProd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgRatProd.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAvgRatProd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAvgRatProd.xss">
+      <DependentUpon>SHOPVERSEAvgRatProd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgSpend.xsc">
+      <DependentUpon>SHOPVERSEAvgSpend.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEAvgSpend.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEAvgSpend.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEAvgSpend.xss">
+      <DependentUpon>SHOPVERSEAvgSpend.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEBasLoc.xsc">
+      <DependentUpon>SHOPVERSEBasLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEBasLoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEBasLoc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEBasLoc.xss">
+      <DependentUpon>SHOPVERSEBasLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEBestProds.xsc">
+      <DependentUpon>SHOPVERSEBestProds.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEBestProds.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEBestProds.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEBestProds.xss">
+      <DependentUpon>SHOPVERSEBestProds.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSECatCont.xsc">
+      <DependentUpon>SHOPVERSECatCont.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSECatCont.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSECatCont.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSECatCont.xss">
+      <DependentUpon>SHOPVERSECatCont.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataGenDem.xsc">
+      <DependentUpon>SHOPVERSEDataGenDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataGenDem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataGenDem.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataGenDem.xss">
+      <DependentUpon>SHOPVERSEDataGenDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet.xsc">
+      <DependentUpon>SHOPVERSEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet.xss">
+      <DependentUpon>SHOPVERSEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet1.xsc">
+      <DependentUpon>SHOPVERSEDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet1.xss">
+      <DependentUpon>SHOPVERSEDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet10.xsc">
+      <DependentUpon>SHOPVERSEDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet10.xss">
+      <DependentUpon>SHOPVERSEDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet11.xsc">
+      <DependentUpon>SHOPVERSEDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet11.xss">
+      <DependentUpon>SHOPVERSEDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet12.xsc">
+      <DependentUpon>SHOPVERSEDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet12.xss">
+      <DependentUpon>SHOPVERSEDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet13.xsc">
+      <DependentUpon>SHOPVERSEDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet13.xss">
+      <DependentUpon>SHOPVERSEDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet141.xsc">
+      <DependentUpon>SHOPVERSEDataSet141.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet141.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet141.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet141.xss">
+      <DependentUpon>SHOPVERSEDataSet141.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet151.xsc">
+      <DependentUpon>SHOPVERSEDataSet151.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet151.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet151.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet151.xss">
+      <DependentUpon>SHOPVERSEDataSet151.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet161.xsc">
+      <DependentUpon>SHOPVERSEDataSet161.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet161.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet161.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet161.xss">
+      <DependentUpon>SHOPVERSEDataSet161.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet171.xsc">
+      <DependentUpon>SHOPVERSEDataSet171.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet171.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet171.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet171.xss">
+      <DependentUpon>SHOPVERSEDataSet171.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet18.xsc">
+      <DependentUpon>SHOPVERSEDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet18.xss">
+      <DependentUpon>SHOPVERSEDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet19.xsc">
+      <DependentUpon>SHOPVERSEDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet19.xss">
+      <DependentUpon>SHOPVERSEDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet2.xsc">
+      <DependentUpon>SHOPVERSEDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet2.xss">
+      <DependentUpon>SHOPVERSEDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet3.xsc">
+      <DependentUpon>SHOPVERSEDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet3.xss">
+      <DependentUpon>SHOPVERSEDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet4.xsc">
+      <DependentUpon>SHOPVERSEDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet4.xss">
+      <DependentUpon>SHOPVERSEDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet5.xsc">
+      <DependentUpon>SHOPVERSEDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet5.xss">
+      <DependentUpon>SHOPVERSEDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet6.xsc">
+      <DependentUpon>SHOPVERSEDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet6.xss">
+      <DependentUpon>SHOPVERSEDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet7.xsc">
+      <DependentUpon>SHOPVERSEDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet7.xss">
+      <DependentUpon>SHOPVERSEDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet8.xsc">
+      <DependentUpon>SHOPVERSEDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet8.xss">
+      <DependentUpon>SHOPVERSEDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet9.xsc">
+      <DependentUpon>SHOPVERSEDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDataSet9.xss">
+      <DependentUpon>SHOPVERSEDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDeadStock.xsc">
+      <DependentUpon>SHOPVERSEDeadStock.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDeadStock.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDeadStock.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDeadStock.xss">
+      <DependentUpon>SHOPVERSEDeadStock.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDemPref.xsc">
+      <DependentUpon>SHOPVERSEDemPref.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEDemPref.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEDemPref.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEDemPref.xss">
+      <DependentUpon>SHOPVERSEDemPref.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEFreqAbd.xsc">
+      <DependentUpon>SHOPVERSEFreqAbd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEFreqAbd.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEFreqAbd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEFreqAbd.xss">
+      <DependentUpon>SHOPVERSEFreqAbd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGenAna.xsc">
+      <DependentUpon>SHOPVERSEGenAna.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGenAna.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGenAna.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGenAna.xss">
+      <DependentUpon>SHOPVERSEGenAna.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGend.xsc">
+      <DependentUpon>SHOPVERSEGend.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGend.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGend.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGend.xss">
+      <DependentUpon>SHOPVERSEGend.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetAge.xsc">
+      <DependentUpon>SHOPVERSEGetAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetAge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGetAge.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGetAge.xss">
+      <DependentUpon>SHOPVERSEGetAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetChurn.xsc">
+      <DependentUpon>SHOPVERSEGetChurn.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetChurn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGetChurn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGetChurn.xss">
+      <DependentUpon>SHOPVERSEGetChurn.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetDem.xsc">
+      <DependentUpon>SHOPVERSEGetDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetDem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGetDem.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGetDem.xss">
+      <DependentUpon>SHOPVERSEGetDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetGen.xsc">
+      <DependentUpon>SHOPVERSEGetGen.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetGen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGetGen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGetGen.xss">
+      <DependentUpon>SHOPVERSEGetGen.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetLoc.xsc">
+      <DependentUpon>SHOPVERSEGetLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEGetLoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEGetLoc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEGetLoc.xss">
+      <DependentUpon>SHOPVERSEGetLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEInsLoc.xsc">
+      <DependentUpon>SHOPVERSEInsLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEInsLoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEInsLoc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEInsLoc.xss">
+      <DependentUpon>SHOPVERSEInsLoc.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSELocIns.xsc">
+      <DependentUpon>SHOPVERSELocIns.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSELocIns.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSELocIns.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSELocIns.xss">
+      <DependentUpon>SHOPVERSELocIns.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSELowStock.xsc">
+      <DependentUpon>SHOPVERSELowStock.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSELowStock.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSELowStock.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSELowStock.xss">
+      <DependentUpon>SHOPVERSELowStock.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSENewAge.xsc">
+      <DependentUpon>SHOPVERSENewAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSENewAge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSENewAge.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSENewAge.xss">
+      <DependentUpon>SHOPVERSENewAge.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSENewUse.xsc">
+      <DependentUpon>SHOPVERSENewUse.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSENewUse.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSENewUse.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSENewUse.xss">
+      <DependentUpon>SHOPVERSENewUse.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEOrdComp.xsc">
+      <DependentUpon>SHOPVERSEOrdComp.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEOrdComp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEOrdComp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEOrdComp.xss">
+      <DependentUpon>SHOPVERSEOrdComp.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEPreDem.xsc">
+      <DependentUpon>SHOPVERSEPreDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEPreDem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEPreDem.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEPreDem.xss">
+      <DependentUpon>SHOPVERSEPreDem.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERatTop.xsc">
+      <DependentUpon>SHOPVERSERatTop.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERatTop.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSERatTop.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSERatTop.xss">
+      <DependentUpon>SHOPVERSERatTop.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERelShip.xsc">
+      <DependentUpon>SHOPVERSERelShip.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERelShip.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSERelShip.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSERelShip.xss">
+      <DependentUpon>SHOPVERSERelShip.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERepeatPurch.xsc">
+      <DependentUpon>SHOPVERSERepeatPurch.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERepeatPurch.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSERepeatPurch.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSERepeatPurch.xss">
+      <DependentUpon>SHOPVERSERepeatPurch.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEReturn.xsc">
+      <DependentUpon>SHOPVERSEReturn.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEReturn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEReturn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEReturn.xss">
+      <DependentUpon>SHOPVERSEReturn.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERevPerCat.xsc">
+      <DependentUpon>SHOPVERSERevPerCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSERevPerCat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSERevPerCat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSERevPerCat.xss">
+      <DependentUpon>SHOPVERSERevPerCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESaleAvgOrd.xsc">
+      <DependentUpon>SHOPVERSESaleAvgOrd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESaleAvgOrd.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSESaleAvgOrd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSESaleAvgOrd.xss">
+      <DependentUpon>SHOPVERSESaleAvgOrd.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESalSel.xsc">
+      <DependentUpon>SHOPVERSESalSel.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESalSel.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSESalSel.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSESalSel.xss">
+      <DependentUpon>SHOPVERSESalSel.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESelRet.xsc">
+      <DependentUpon>SHOPVERSESelRet.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESelRet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSESelRet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSESelRet.xss">
+      <DependentUpon>SHOPVERSESelRet.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESentiment.xsc">
+      <DependentUpon>SHOPVERSESentiment.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSESentiment.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSESentiment.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSESentiment.xss">
+      <DependentUpon>SHOPVERSESentiment.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEShipDel.xsc">
+      <DependentUpon>SHOPVERSEShipDel.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEShipDel.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEShipDel.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEShipDel.xss">
+      <DependentUpon>SHOPVERSEShipDel.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETopCat.xsc">
+      <DependentUpon>SHOPVERSETopCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETopCat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSETopCat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSETopCat.xss">
+      <DependentUpon>SHOPVERSETopCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETrendCat.xsc">
+      <DependentUpon>SHOPVERSETrendCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETrendCat.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSETrendCat.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSETrendCat.xss">
+      <DependentUpon>SHOPVERSETrendCat.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETurnOver.xsc">
+      <DependentUpon>SHOPVERSETurnOver.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSETurnOver.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSETurnOver.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSETurnOver.xss">
+      <DependentUpon>SHOPVERSETurnOver.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEUseEng.xsc">
+      <DependentUpon>SHOPVERSEUseEng.xsd</DependentUpon>
+    </None>
+    <None Include="SHOPVERSEUseEng.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHOPVERSEUseEng.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHOPVERSEUseEng.xss">
+      <DependentUpon>SHOPVERSEUseEng.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>
